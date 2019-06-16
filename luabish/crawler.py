@@ -1,14 +1,14 @@
-import random
-import requests
-import http
-import time
+import random as _random
+import requests as _requests
+import http as _http
+import time as _time
 
-from urllib3.util import Retry
-from requests.adapters import HTTPAdapter
-from http.client import IncompleteRead
-from lxml import etree
+from urllib3.util import Retry as _Retry
+from requests.adapters import HTTPAdapter as _HTTPAdapter
+from http.client import IncompleteRead as _IncompleteRead
+from lxml import etree as _etree
 
-uas = [
+UAS = [
     "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/58.0.3029.96 Chrome/58.0.30"
     "29.96 Safari/537.36",
     "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:17.0; Baiduspider-ads) Gecko/17.0 Firefox/17.0",
@@ -23,7 +23,7 @@ uas = [
 ]
 
 # 需要pip install pysocks才能使requests支持socks5代理
-proxy = {
+PROXY = {
     'http': 'socks5://127.0.0.1:1080',
     'https': 'socks5://127.0.0.1:1080',
 }
@@ -31,18 +31,15 @@ proxy = {
 
 def get_fund_value(id: str)-> float:
     url = 'http://fund.eastmoney.com/{}.html'.format(id)
-    html = etree.HTML(get_content(url).text)
+    html = _etree.HTML(get_content(url).text)
     return float(html.xpath('//*[@id="gz_gsz"]/text()')[0])
 
 
 def set_header():
-    """
-    随机IP+随机User Agent
-    """
-    random_ip = str(random.randint(0, 255)) + '.' + str(random.randint(0, 255)) + '.' + str(
-        random.randint(0, 255)) + '.' + str(random.randint(0, 255))
+    random_ip = str(_random.randint(0, 255)) + '.' + str(_random.randint(0, 255)) + '.' + str(
+        _random.randint(0, 255)) + '.' + str(_random.randint(0, 255))
     headers = {
-        'User-Agent': random.choice(uas),
+        'User-Agent': _random.choice(UAS),
         "Accept-Language": "zh-CN,zh;q=0.8,en;q=0.6",
         'X-Forwarded-For': random_ip,
     }
@@ -50,11 +47,11 @@ def set_header():
 
 
 def build_session(gfw=False, cookies=None):
-    s = requests.Session()
+    s = _requests.Session()
     s.headers = set_header()
-    s.proxies = proxy if gfw else None
-    s.cookies = requests.utils.cookiejar_from_dict(
-        cookies) if cookies else requests.utils.cookiejar_from_dict({})
+    s.proxies = PROXY if gfw else None
+    s.cookies = _requests.utils.cookiejar_from_dict(
+        cookies) if cookies else _requests.utils.cookiejar_from_dict({})
     return s
 
 
@@ -63,24 +60,24 @@ def get_content(url, gfw=False, cookies=None):
     服务器错误时重试+随机header
     """
     try:
-        s = requests.Session()
+        s = _requests.Session()
 
-        retries = Retry(total=5, backoff_factor=10,
-                        status_forcelist=[500, 502, 503, 504])
-        s.mount('http://', HTTPAdapter(max_retries=retries))
-        return s.get(url, headers=set_header(), proxies=proxy if gfw else None, cookies=cookies)
+        retries = _Retry(total=5, backoff_factor=10,
+                         status_forcelist=[500, 502, 503, 504])
+        s.mount('http://', _HTTPAdapter(max_retries=retries))
+        return s.get(url, headers=set_header(), proxies=PROXY if gfw else None, cookies=cookies)
     except ConnectionResetError:
         print('ConnectionResetError')
-        time.sleep(10)
+        _time.sleep(10)
         get_content(url)
-    except http.client.IncompleteRead:
+    except _http.client.IncompleteRead:
         print('http.client.IncompleteRead')
-        time.sleep(10)
+        _time.sleep(10)
         get_content(url)
 
 
 def get_ip():
-    return requests.get('http://icanhazip.com/').text
+    return _requests.get('http://icanhazip.com/').text
 
 
 def chrome_cookie_to_dict(cookie_str):

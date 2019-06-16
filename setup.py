@@ -20,6 +20,7 @@ setup(
         'lxml',
         'requests',
         'urllib3',
+        'pysocks',
     ]
 
 )
