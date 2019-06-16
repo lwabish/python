@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='luabish',
-    version='0.0.1',
+    version='0.0.2',
     description=(
         'A Luabish\'s self use toolbox:Collections of all types of basic python codes.'),
     long_description=open('README.md').read(),
@@ -11,7 +11,7 @@ setup(
     maintainer='Luabish Wu',
     license='MIT',
     packages=find_packages(),
-    url='https://github',
+    url='https://github.com/luabish/luabish',
     classifiers=[
         'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries'
@@ -21,6 +21,7 @@ setup(
         'requests',
         'urllib3',
         'pysocks',
+        'scipy',
     ]
 
 )
