@@ -2,7 +2,7 @@ import random as _random
 import requests as _requests
 import http as _http
 import time as _time
-
+from requests_html import HTMLSession as _HTMLSession
 from urllib3.util import Retry as _Retry
 from requests.adapters import HTTPAdapter as _HTTPAdapter
 from http.client import IncompleteRead as _IncompleteRead
@@ -29,7 +29,7 @@ PROXY = {
 }
 
 
-def get_fund_value(id: str)-> float:
+def get_fund_value(id: str) -> float:
     url = 'http://fund.eastmoney.com/{}.html'.format(id)
     html = _etree.HTML(get_content(url).text)
     return float(html.xpath('//*[@id="gz_gsz"]/text()')[0])
@@ -46,8 +46,11 @@ def set_header():
     return headers
 
 
-def build_session(gfw=False, cookies=None):
-    s = _requests.Session()
+def build_session(gfw=False, cookies=None, rq_html=False):
+    if rq_html:
+        s = _HTMLSession
+    else:
+        s = _requests.Session()
     s.headers = set_header()
     s.proxies = PROXY if gfw else None
     s.cookies = _requests.utils.cookiejar_from_dict(
