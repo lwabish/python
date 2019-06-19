@@ -48,7 +48,7 @@ def set_header():
 
 def build_session(gfw=False, cookies=None, rq_html=False):
     if rq_html:
-        s = _HTMLSession
+        s = _HTMLSession()
     else:
         s = _requests.Session()
     s.headers = set_header()
