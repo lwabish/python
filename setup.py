@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='luabish',
-    version='0.0.2',
+    version='0.0.3',
     description=(
         'A Luabish\'s self use toolbox:Collections of all types of basic python codes.'),
     long_description=open('README.md').read(),
@@ -22,6 +22,7 @@ setup(
         'urllib3',
         'pysocks',
         'scipy',
+        'requests_html',
     ]
 
 )

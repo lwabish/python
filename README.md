@@ -3,13 +3,13 @@
 This is a python module of my own.
 
 ## Install & Usage
+```python
+#normal install
+pip install git+https://github.com/luabish/luabish.git@master
 
-normal install
-`pip install git+https://github.com/luabish/luabish.git@master`
-
-install specific version from git(0.0.2 as example as follow)
-`pip install git+https://github.com/luabish/luabish.git@v0.0.2`
-
+#install specific version from git(0.0.2 as example as follow)
+pip install git+https://github.com/luabish/luabish.git@v0.0.2
+```
 ## Structure
 
 There are now several categories of codes as follow:
