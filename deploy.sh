@@ -1,8 +1,8 @@
 #!/bin/bash
-TAG=$(cat luabish/__init__.py|grep '__version__'|sed "s/^__version__ = '\(.*\)'/\1/")
+TAG=$(/Users/wubowen/miniconda3/bin/python setup.py --version)
 DATE=$(date "+%Y-%m-%d %H:%M:%S")
 
-git add luabish/__init__.py
+git add .
 git commit -m "add tag version ${TAG} ${DATE}"
 git push origin master:master
 git tag -d v${TAG}
