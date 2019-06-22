@@ -55,6 +55,9 @@ def build_session(gfw=False, cookies=None, rq_html=False):
     s.proxies = PROXY if gfw else None
     s.cookies = _requests.utils.cookiejar_from_dict(
         cookies) if cookies else _requests.utils.cookiejar_from_dict({})
+    retries = _Retry(total=5, backoff_factor=10,
+                     status_forcelist=[500, 502, 503, 504])
+    s.mount('http://', _HTTPAdapter(max_retries=retries))
     return s
 
 
@@ -77,6 +80,14 @@ def get_content(url, gfw=False, cookies=None):
         print('http.client.IncompleteRead')
         _time.sleep(10)
         get_content(url)
+
+
+def get_header(url, gfw=False, cookies=None):
+    try:
+        s = _requests.Session()
+        return s.head(url, headers=set_header(), proxies=PROXY if gfw else None, cookies=cookies)
+    except Exception as e:
+        print(e)
 
 
 def get_ip():
