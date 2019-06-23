@@ -61,7 +61,7 @@ def build_session(gfw=False, cookies=None, rq_html=False):
     return s
 
 
-def get_content(url, gfw=False, cookies=None):
+def get_content(url, gfw=False, cookies=None, **kwargs):
     """
     服务器错误时重试+随机header
     """
@@ -71,7 +71,7 @@ def get_content(url, gfw=False, cookies=None):
         retries = _Retry(total=5, backoff_factor=10,
                          status_forcelist=[500, 502, 503, 504])
         s.mount('http://', _HTTPAdapter(max_retries=retries))
-        return s.get(url, headers=set_header(), proxies=PROXY if gfw else None, cookies=cookies)
+        return s.get(url, headers=set_header(), proxies=PROXY if gfw else None, cookies=cookies, **kwargs)
     except ConnectionResetError:
         print('ConnectionResetError')
         _time.sleep(10)
@@ -103,4 +103,5 @@ def chrome_cookie_to_dict(cookie_str):
 
 
 if __name__ == '__main__':
-    pass
+    print(get_content('http://91porn.com/my_profile.php', True,
+                      allow_redirects=False).status_code)
