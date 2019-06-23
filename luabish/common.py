@@ -115,7 +115,7 @@ def transform_time(data, target_type):
     将data转换为target_type的时间类型
     时间戳只能由time obj转换
     ;param data;要转换的原始数据
-    ;param target_type;
+    ;param target_type int;
         1: string
         2: timestamp
         3: time tuple(time obj)
@@ -166,6 +166,8 @@ def transform_time(data, target_type):
             result = time.strptime(data, "%Y-%m-%d %H:%M:%S")
         elif target_type == 4:  # string 转datetime obj
             result = datetime.datetime.strptime(data, "%Y-%m-%d %H:%M:%S")
+        else:
+            raise Exception('target_type为整数类型，请查看参数说明')
     elif isinstance(data, float):
         if target_type == 1:  # 时间戳转字符串
             _time_obj = transform_time(data, 3)
@@ -174,6 +176,8 @@ def transform_time(data, target_type):
             result = time.localtime(data)
         elif target_type == 4:  # 时间戳转datetime obj
             result = datetime.datetime.fromtimestamp(data)
+        else:
+            raise Exception('target_type为整数类型，请查看参数说明')
     elif isinstance(data, tuple):
         if target_type == 1:  # time obj转字符串
             result = time.strftime("%Y-%m-%d %H:%M:%S", data)
@@ -181,6 +185,8 @@ def transform_time(data, target_type):
             result = time.mktime(data)
         elif target_type == 4:  # time obj转datetime obj
             result = datetime.datetime(*data[0:6])
+        else:
+            raise Exception('target_type为整数类型，请查看参数说明')
     elif isinstance(data, datetime.datetime):
         if target_type == 1:  # datetime obj转string
             result = data.strftime("%Y-%m-%d %H:%M:%S")
@@ -189,9 +195,10 @@ def transform_time(data, target_type):
             result = transform_time(_time_obj, 2)
         elif target_type == 3:  # datetime obj转time obj
             result = data.timetuple()
+        else:
+            raise Exception('target_type为整数类型，请查看参数说明')
     else:
-        print(type(data))
-        print('不支持的数据类型')
+        raise Exception('不受支持的data参数类型{}'.format(type(data)))
     return result
 
 
