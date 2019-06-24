@@ -1,5 +1,8 @@
 from datetime import date
-from scipy.optimize import newton, brentq
+try:
+    from scipy.optimize import newton, brentq
+except ImportError:
+    raise ImportError('scipy过大，所以默认没有安装，请先安装后再使用')
 
 
 def xnpv(rate, values, dates):
