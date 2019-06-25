@@ -2,6 +2,16 @@ import datetime
 import functools
 import logging
 import time
+import requests
+import os
+
+
+def send_wx_notification(sckey, title, content):
+    sc_api = 'https://sc.ftqq.com/{}.send'.format(sckey)
+    if requests.post(sc_api, data={'text': title, 'desp': content}).status_code == 200:
+        return True
+    else:
+        return False
 
 
 def Singleton(cls):
