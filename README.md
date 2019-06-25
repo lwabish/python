@@ -27,6 +27,8 @@ There are now several categories of codes as follow:
 ### file
 
 ## Update Log
+- 0.0.4(2019/06/24)
+  - 移除默认安装的scipy，太大
 - 0.0.3(2019/06/19)
   - add requests_html support
 - 0.0.2(2019/06/16)

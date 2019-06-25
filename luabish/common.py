@@ -4,10 +4,6 @@ import logging
 import time
 
 
-class Logger:
-    pass
-
-
 def Singleton(cls):
     """
     装饰器：修饰class，使得该类成为单例类
@@ -204,6 +200,45 @@ def transform_time(data, target_type):
 
 def sort_dict(data: dict, reverse=False):
     return {key: data[key] for key in sorted(data, reverse=reverse)}
+
+
+class Logger:
+    level_relations = {
+        'debug': logging.DEBUG,
+        'info': logging.INFO,
+        'warning': logging.WARNING,
+        'error': logging.ERROR,
+        'critical': logging.CRITICAL
+    }
+    logger = None
+
+    def __init__(self, file_path=None, level='debug',
+                 fmt='%(asctime)s - [%(levelname)s]: %(message)s'):
+        self.logger = logging.getLogger()
+        self.logger.setLevel(self.level_relations[level])
+        stream_handler = logging.StreamHandler()
+        stream_handler.setFormatter(logging.Formatter(fmt))
+        self.logger.addHandler(stream_handler)
+
+        if file_path:
+            file_handler = logging.FileHandler(file_path)
+            file_handler.setFormatter(logging.Formatter(fmt))
+            self.logger.addHandler(file_handler)
+
+    def debug(self, msg):
+        self.logger.debug(msg)
+
+    def info(self, msg):
+        self.logger.info(msg)
+
+    def warning(self, msg):
+        self.logger.warning(msg)
+
+    def error(self, msg):
+        self.logger.error(msg)
+
+    def critical(self, msg):
+        self.logger.critical(msg)
 
 
 if __name__ == '__main__':

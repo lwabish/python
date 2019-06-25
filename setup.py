@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='luabish',
-    version='0.0.4',
+    version='0.0.5',
     description=(
         'A Luabish\'s self use toolbox:Collections of all types of basic python codes.'),
     long_description=open('README.md').read(),
