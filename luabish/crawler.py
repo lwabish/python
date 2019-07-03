@@ -97,8 +97,9 @@ def get_ip():
 def chrome_cookie_to_dict(cookie_str):
     result = dict()
     for cookie in cookie_str.split('; '):
-        cookie = cookie.split('=')
-        result[cookie[0]] = cookie[1]
+        if not cookie:
+            cookie = cookie.split('=')
+            result[cookie[0]] = cookie[1]
     return result
 
 
