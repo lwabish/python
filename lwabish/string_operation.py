@@ -12,7 +12,7 @@ def get_middle_str(content, start, end):
 
 
 def remove_special_space(content):
-    '''
+    """
     移除\xa0之类的特殊空格
-    '''
+    """
     return "".join(content.split())

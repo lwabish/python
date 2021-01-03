@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='luabish',
+    name='lwabish',
     version='0.0.6',
     description=(
         'A Luabish\'s self use toolbox:Collections of all types of basic python codes.'),
@@ -21,7 +21,7 @@ setup(
         'requests',
         'urllib3',
         'pysocks',
-        # 'scipy',
+        'scipy',
         'requests_html',
     ]
 

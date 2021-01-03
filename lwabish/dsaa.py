@@ -2,6 +2,7 @@ import random
 from collections import deque
 from functools import reduce
 
+
 ##############################数值#########################
 
 
@@ -12,7 +13,7 @@ def int_to_bin32(i):
     return : 该整数的32位表示形式
     """
     tmp_str = (bin(((1 << 32) - 1) & i)
-               [2:]).zfill(32)  # str.zfill(x)用0补齐字符串，生成一个x位字符串
+    [2:]).zfill(32)  # str.zfill(x)用0补齐字符串，生成一个x位字符串
     return int(tmp_str, 2)
 
 
@@ -24,7 +25,10 @@ def get_digit_sum(num):
 
     def add_all(x, y):
         return x + y
+
     return reduce(add_all, digits)
+
+
 ##############################列表#########################
 
 
@@ -74,7 +78,7 @@ class Stack():
     def __init__(self):
         self.items = []
 
-    def __bool__(self):   # 使该类支持布尔测试：bool()函数先找__bool__,然后找__len__
+    def __bool__(self):  # 使该类支持布尔测试：bool()函数先找__bool__,然后找__len__
         if self.items:
             return True
         else:
@@ -91,10 +95,11 @@ class Stack():
 
     def peek(self):
         if not self.is_empty():
-            return self.items[len(self.items)-1]
+            return self.items[len(self.items) - 1]
 
     def get_size(self):
         return len(self.items)
+
 
 ##########################链表相关###################################
 
@@ -106,6 +111,7 @@ class LinkNode():  # 不加括号，不继承object也可以
 
     def __repr__(self):
         return str(self.val)
+
     __str__ = __repr__
 
 
@@ -142,7 +148,7 @@ def generate_random_linknode(length, value_max):
             if length == 1:
                 return this_node
             continue
-        if i == length-1:
+        if i == length - 1:
             this_node.next = last_node
             return this_node
         this_node.next = last_node
@@ -214,6 +220,8 @@ def linknode_add_circle(linknode, entry_point_value):
                 break
         linknode = linknode.next
     return head
+
+
 ##########################二叉树相关#################################
 
 
