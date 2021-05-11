@@ -13,7 +13,7 @@ def int_to_bin32(i):
     return : 该整数的32位表示形式
     """
     tmp_str = (bin(((1 << 32) - 1) & i)
-    [2:]).zfill(32)  # str.zfill(x)用0补齐字符串，生成一个x位字符串
+               [2:]).zfill(32)  # str.zfill(x)用0补齐字符串，生成一个x位字符串
     return int(tmp_str, 2)
 
 
