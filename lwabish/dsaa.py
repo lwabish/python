@@ -225,78 +225,10 @@ def linknode_add_circle(linknode, entry_point_value):
 ##########################二叉树相关#################################
 
 
-class TreeNode():
-    def __init__(self, x):
-        self.val = x
-        self.left = None
-        self.right = None
-        self.parent = None
 
 
-def middle_order_inter(root):
-    """
-    中序遍历一颗二叉树
-    """
-    pass
 
 
-def generate_treenode(input, with_parent=False):
-    """
-    层次遍历\n
-    ;input; 1,2,null,3\n
-    ;with_parent;是否为子树增加parent属性指向父节点，默认位False\n
-    注意，null不需要全写出来。不存在的子树下面的null不需要写，只需要写有父节点的子节点\n
-    """
-    input = input.strip()
-    if not input:
-        return None
-
-    inputValues = [s.strip() for s in input.split(',')]
-    root = TreeNode(int(inputValues[0]))
-    nodeQueue = [root]
-    front = 0
-    index = 1
-    while index < len(inputValues):
-        node = nodeQueue[front]
-        front = front + 1
-
-        item = inputValues[index]
-        index = index + 1
-        if item != "null":
-            leftNumber = int(item)
-            node.left = TreeNode(leftNumber)
-            if with_parent:
-                node.left.parent = node
-            nodeQueue.append(node.left)
-
-        if index >= len(inputValues):
-            break
-
-        item = inputValues[index]
-        index = index + 1
-        if item != "null":
-            rightNumber = int(item)
-            node.right = TreeNode(rightNumber)
-            if with_parent:
-                node.right.parent = node
-            nodeQueue.append(node.right)
-    return root
-
-
-def print_treenode(node, prefix="", isLeft=True):
-    if not node:
-        print("Empty Tree")
-        return
-
-    if node.right:
-        print_treenode(node.right, prefix +
-                       ("│   " if isLeft else "    "), False)
-
-    print(prefix + ("└── " if isLeft else "┌── ") + str(node.val))
-
-    if node.left:
-        print_treenode(node.left, prefix +
-                       ("    " if isLeft else "│   "), True)
 
 
 def get_specific_treenode(root, val):

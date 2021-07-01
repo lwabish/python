@@ -104,5 +104,5 @@ def chrome_cookie_to_dict(cookie_str):
 
 
 if __name__ == '__main__':
-    print(get_content('http://91porn.com/my_profile.php', True,
+    print(get_content('https://baidu.com', True,
                       allow_redirects=False).status_code)

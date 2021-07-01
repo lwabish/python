@@ -1,4 +1,5 @@
 import re
+
 '''
 import pattern_XXX
 pattern_XXX.match('somestring')
