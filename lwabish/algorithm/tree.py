@@ -14,6 +14,12 @@ class TreeNode:
         self.right = None
         self.parent = None
 
+    def __str__(self) -> str:
+        return 'TreeNode[{}]'.format(str(self.val))
+
+    def __repr__(self) -> str:
+        return 'TreeNode[{}]'.format(str(self.val))
+
 
 def new_tree(values: str, with_parent=False):
     """
@@ -82,3 +88,7 @@ def print_tree(root: TreeNode, prefix="", is_left=True):
     print(prefix + ("└── " if is_left else "┌── ") + str(root.val))
     if root.left:
         print_tree(root.left, prefix + ("    " if is_left else "│   "), True)
+
+
+if __name__ == '__main__':
+    print(TreeNode(1))
