@@ -147,7 +147,7 @@ def transform_time(date, target_type):
     ;return;
         以target_type为格式的时间对象
 
-    >>> from lwabish.collections import transform_time
+    >>> from lwabish.common import transform_time
     >>> date_str = '2019-02-01 22:22:22'
     >>> time_stamp = 1549030942.0
     >>> time_obj = (2019,2,1,22,22,22,4,32,-1)

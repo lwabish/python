@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/05-pip-lwabish.iml" filepath="$PROJECT_DIR$/.idea/05-pip-lwabish.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/pypi-lwabish.iml" filepath="$PROJECT_DIR$/.idea/pypi-lwabish.iml" />
     </modules>
   </component>
 </project>
