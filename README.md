@@ -30,6 +30,10 @@ import lwabish
 - lwabish.crawler: 和爬虫相关的工具函数。该模块很久未维护。
 - ...
 
+## 本地开发调试
+
+`pip install -e .`
+
 ## 注意
 
 由于模块里功能比较分散且未成型，所以没有把依赖写进pypi安装包的install_requires里，如果遇到ImportError可自行安装相关的模块
