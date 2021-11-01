@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='lwabish',
-    version='0.1.0',
+    version='0.7.0',
     description=(
         'Collections of python snippets'),
     long_description=open('README.md').read(),
@@ -17,6 +17,7 @@ setup(
         'Topic :: Software Development :: Libraries'
     ],
     install_requires=[
+        # fixme: 待稳定后整理requirements
         # 'lxml',
         # 'requests',
         # 'urllib3',
