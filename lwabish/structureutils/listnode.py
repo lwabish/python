@@ -131,3 +131,18 @@ def add_circle_for_listnode(node: ListNode, entry_point_value) -> ListNode:
                 break
         node = node.next
     return head
+
+
+def link_two_listnode(head: ListNode, entry_point: ListNode) -> ListNode:
+    """
+    把一个链表的尾巴链接到另一个链表上
+
+    :param head: 待链接的链表头
+    :param entry_point: 被链接链表的入口listnode
+    :return: 待链接链表的头
+    """
+    node = head
+    while node.next:
+        node = node.next
+    node.next = entry_point
+    return head
