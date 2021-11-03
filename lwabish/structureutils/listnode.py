@@ -110,12 +110,13 @@ def get_first_node_by_value(node: ListNode, val: int) -> Optional[ListNode]:
         node = node.next
 
 
-def add_circle_for_listnode(node: ListNode, entry_point_value):
+def add_circle_for_listnode(node: ListNode, entry_point_value) -> ListNode:
     """
     为单向链表增加一个环：连接尾节点到正序遍历第一个值为entry_point_value的节点\n
     不能用尾巴节点链接自己。
     @:param node: 头结点
     @:param entry_point_value: 被尾节点链接成环目标节点的值
+    @:return node: 原头结点
     """
     head = node
     entry_node = None
