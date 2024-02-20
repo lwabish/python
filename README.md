@@ -1,4 +1,4 @@
-# pypi-lwabish
+# python
 
 ## 简介
 
@@ -6,12 +6,12 @@
 
 ## 安装&使用
 
-```commandline
+```bash
 # 安装最新版本
-pip install git+https://github.com/lwabish/pypi-lwabish.git@master
+pip install git+https://github.com/lwabish/python.git@master
 
 # 安装指定版本(例如v0.0.2)
-pip install git+https://github.com/luabish/luabish.git@v0.0.2
+pip install git+https://github.com/lwabish/python.git@v0.0.2
 ```
 
 安装完成后即可像使用其他库一样import本模块
@@ -25,7 +25,7 @@ import lwabish
 ## 内容
 
 - lwabish.common: 未分类的或不好分类的通用工具函数
-- lwabish.structureutils: 以各种数据结构为核心的类定义以及工具函数
+- lwabish.structure_utils: 以各种数据结构为核心的类定义以及工具函数
 - lwabish.finance: 金融相关的工具函数，比如各种收益率如xirr的计算等
 - lwabish.crawler: 和爬虫相关的工具函数。该模块很久未维护。
 - ...

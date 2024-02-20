@@ -11,7 +11,7 @@ setup(
     maintainer='Lwabish',
     license='MIT',
     packages=find_packages(),
-    url='https://github.com/lwabish/pypi-lwabish',
+    url='https://github.com/lwabish/python',
     classifiers=[
         'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries'
