@@ -31,7 +31,7 @@ def singleton(cls):
     return _singleton
 
 
-def print_used_time(func=None, show_params=True):
+def print_used_time(func=None, show_params=False, show_result=False):
     """装饰器：打印出函数的执行时间
 
     show_params(O): 打印出函数的参数，默认True
@@ -64,10 +64,10 @@ def print_used_time(func=None, show_params=True):
                     arg_list.append(','.join(pairs))
                     # print(arg_list)
                 arg_str = ','.join(arg_list)
-                print('[%0.8fs] %s(%s) -> %r' %
-                      (elapsed, name, arg_str, result))
+                print('%s(%s) -> %r [%0.8fs] ' %
+                      (name, arg_str, result if show_result else "", elapsed))
             else:
-                print('[%0.8fs] %s() -> %r' % (elapsed, name, result))
+                print('%s() -> %r [%0.8fs]' % (name, result if show_result else "", elapsed))
             # print(show_params)
             return result
 
