@@ -25,7 +25,7 @@ import lwabish
 ## 内容
 
 - lwabish.common: 未分类的或不好分类的通用工具函数
-- lwabish.structure_utils: 以各种数据结构为核心的类定义以及工具函数
+- lwabish.structs: 以各种数据结构为核心的类定义以及工具函数
 - lwabish.finance: 金融相关的工具函数，比如各种收益率如xirr的计算等
 - lwabish.crawler: 和爬虫相关的工具函数。该模块很久未维护。
 - ...
